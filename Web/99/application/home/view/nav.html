@@ -1,0 +1,76 @@
+<nav class="nav-menu d-none d-lg-block mr">
+    <ul>
+        <li class="">
+            <a class="forJsClick" data-url="{:url('/home/index/home')}" href="javascript:viod(0)">
+                <i class="iconfont icon-zhuye" ></i>
+                首頁
+            </a>
+        </li>
+        <li  class="">
+            <a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/index/pay')}">
+                <i class="iconfont icon-chongzhi" ></i>
+                儲值
+            </a>
+        </li>
+        <li class="">
+            <a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/index/withdraw')}">
+                <i class="iconfont icon-tixian" ></i>
+                提現
+            </a>
+        </li>
+        {if ($conf['sys_rates']==1)}
+        <li class="">
+            <a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/index/invest')}">
+                <i class="iconfont icon-jijindingtou" ></i>
+                訂投
+            </a>
+        </li>
+        {/if}
+        <li class="drop-down ">
+            <a href="javascript:viod(0)">
+                <i class="iconfont icon-ziyuan" ></i>
+                訂單
+                <span class="caret"></span>
+            </a>
+            <ul>
+                <li><a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/index/accountrecord')}">儲值明細</a></li>
+                <li><a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/index/withdrawrecord')}">提現明細</a></li>
+                <li><a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/order/hold')}">持倉記錄</a></li>
+                <li><a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/order/history')}">歷史記錄</a></li>
+                {if ($conf['sys_rates']==1)}
+                <li><a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/index/userinvest')}">訂投訂單</a></li>
+                {/if}
+            </ul>
+        </li>
+        <li class="drop-down ">
+            <a href="javascript:viod(0)">
+                <i class="iconfont icon-zhanghao" ></i>
+                帳號
+                <span class="caret"></span>
+            </a>
+            <ul>
+                {if $conf['personal_edit'] == 1}
+                <li><a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/index/moditypwd')}">個人資訊</a></li>
+                {/if}
+                <li><a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/index/bankcard')}">銀行資訊</a></li>
+                <li><a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/index/loginout')}">退出</a></li>
+            </ul>
+        </li>
+        <li class="drop-down"><a href="javascript:viod(0)"><i class="iconfont icon-zichan " ></i>資產<span class="caret"></span> </a>
+            <ul  class="font18  zhichan" id="acc_wrap">
+                <li class="flex  pl pr justify-around" ><span class="mLabel" >總金額:</span><span class="mValue _a1">{$userinfo.usermoney}</span></li>
+                {if ($conf['sys_rates']==1)}
+                <li class="flex  pl pr justify-around" ><span class="mLabel" >定投金額:</span><span class="mValue _a2" >{$userinfo.invest_count}</span></li>
+                {/if}
+                <li class="flex  pl pr justify-around" ><span class="mLabel" >昨日收益:</span><span class="mValue _a3" >{$userinfo.yesterday_count}</span></li>
+                <li class="flex  pl pr justify-around" ><span class="mLabel" >今天收益:</span><span class="mValue _a4" >{$userinfo.today_count}</span></li>
+            </ul>
+        </li>
+        <li class="">
+            <a href="javascript:viod(0)" class="forJsClick" data-url="{:url('/home/index/historynotice')}">
+                <i class="iconfont icon-gonggao1" ></i>
+                公告
+            </a>
+        </li>
+    </ul>
+</nav><!-- .nav-menu -->
