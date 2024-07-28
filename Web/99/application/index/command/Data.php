@@ -15,31 +15,27 @@ class Data extends Command
 
     protected function execute(Input $input, Output $output)
     {
-        try{
-            $api = new Api();
-            $output->writeln(date("Y-m-d H:i:s") . " Data Command run!");
-            while(true){
-            	$t = time();
-                if($t % 5 == 0){
-                    $api->order();
-                    $output->writeln(date("Y-m-d H:i:s") . " order run!");
-                    $api->allotorder();
-                    $output->writeln(date("Y-m-d H:i:s") . " allotorder run!");
-                }
-                if($t % 30 == 0){
-                    $api->getdata();
-                    $output->writeln(date("Y-m-d H:i:s") . " getdata run!");
-                    $api->checkbal();
-                    $output->writeln(date("Y-m-d H:i:s") . " checkbal run!");
-                }
-                if($t % 60 == 0){
-                    $api->interest();
-                    $output->writeln(date("Y-m-d H:i:s") . " interest run!");
-                }
-                sleep(1);
+        $api = new Api();
+        $output->writeln(date("Y-m-d H:i:s") . " Data Command run!");
+        while(true){
+            $t = time();
+            if($t % 5 == 0){
+                $api->order();
+                $output->writeln(date("Y-m-d H:i:s") . " order run!");
+                $api->allotorder();
+                $output->writeln(date("Y-m-d H:i:s") . " allotorder run!");
             }
-        } catch(Exception $e) {
-            $output->writeln($e->getMessage());
+            if($t % 30 == 0){
+                $api->getdata();
+                $output->writeln(date("Y-m-d H:i:s") . " getdata run!");
+                $api->checkbal();
+                $output->writeln(date("Y-m-d H:i:s") . " checkbal run!");
+            }
+            if($t % 60 == 0){
+                $api->interest();
+                $output->writeln(date("Y-m-d H:i:s") . " interest run!");
+            }
+            sleep(1);
         }
     }
 }
