@@ -145,7 +145,7 @@ class Index extends Base
             $val['price'] = number_format($val['price'],4);
             session('price'.$val['pid'],$val['price']);
         }
-        return json_encode($product);
+        return $product;
     }
 
     public  function home() {

@@ -40,17 +40,14 @@ $(document).ready(function (e) {
 
   //弹窗关闭
   $('.close').on('click', function (e) {
-      hideShow();
     $("#dialog").addClass('hidden');
   });
 
   $('.glass').on('click', function (e) {
-      //hideShow();
     $("#dialog").addClass('hidden');
   });
 
   $('.dfonter').on('click', function (e) {
-      hideShow();
     $("#dialog").addClass('hidden');
   });
 
@@ -60,10 +57,6 @@ $(document).ready(function (e) {
     getdt();
     window.setInterval("getdt()",10000);
 });
-
-function hideShow() {
-    $.post('99/index/index/hide');
-}
 
 /**
  * 公告弹窗 || 私信
