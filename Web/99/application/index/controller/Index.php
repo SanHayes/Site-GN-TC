@@ -152,15 +152,25 @@ class Index extends Base
      * 获取最新的动态数据
      */
     public  function ajaxdata() {
-        $product = db('productdata')->field("pid,Name,price,isdelete")->where(array('isdelete' => 0))->select();
+        $product = Db::name('productdata')->chache(30)->field("pid,Name,price,isdelete")->where(array('isdelete' => 0))->select();
 
         foreach( $product as $k=>$val) {
-         //   $rd = rand(-3,3);
-          //  $product[$k]['price'] = $val['price'] +$rd*0.01*$val['price'];
+            $rand = mt_rand(-10,10);
+            if($rand < -4){
+                $product[$k]['price'] = session('price'.$val['pid']) + mt_rand(-5,0) * 0.0001;
+            }elseif($rand > 4){
+                $product[$k]['price'] = session('price'.$val['pid']) + mt_rand(0,5) * 0.0001;
+            }else{
+                $product[$k]['price'] = session('price'.$val['pid']);
+            }
             $lastprice= session('price'.$val['pid']);
-            $product[$k]['is_rise']=($lastprice>=$val['price'])?1:2;
-            $product[$k]['price'] = number_format($val['price'],4);
-            session('price'.$val['pid'],$product[$k]['price']);
+            $product[$k]['is_rise']=($lastprice>=$product[$k]['price'])?1:2;
+            $product[$k]['price'] = number_format($product[$k]['price'],4);
+            if(time() % 60 == 0){
+                session('price'.$val['pid'],$val['price']);
+            }else{
+                session('price'.$val['pid'],$product[$k]['price']);
+            }
         }
         return  json_encode($product);
     }
