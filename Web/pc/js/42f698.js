@@ -2,10 +2,11 @@
 
 var page = {
    init: function init() {
-       window.setInterval("getdt()",1000*3);
+        getdt()
+        window.setInterval("getdt()",10000);
         //公告弹窗
-       // get_ad();
-       // window.setInterval("get_ad()",1000*60);
+        // get_ad();
+        // window.setInterval("get_ad()",1000*60);
    }
 };
 $(function () {

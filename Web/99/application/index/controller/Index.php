@@ -152,27 +152,26 @@ class Index extends Base
      * 获取最新的动态数据
      */
     public  function ajaxdata() {
-        $product = Db::name('productdata')->chache(30)->field("pid,Name,price,isdelete")->where(array('isdelete' => 0))->select();
-
-        foreach( $product as $k=>$val) {
+        $product = cache('product');
+        if(!$product){
+            $product = Db::name('productdata')->field("pid,Name,price,isdelete")->where(array('isdelete' => 0))->select();
+            cache('product', $product, 30);
+        }
+        foreach($product as $k => &$val) {
             $rand = mt_rand(-10,10);
             if($rand < -4){
-                $product[$k]['price'] = session('price'.$val['pid']) + mt_rand(-5,0) * 0.0001;
+                $val['price'] = $val['price']  + mt_rand(-3,0) * 0.0001;
             }elseif($rand > 4){
-                $product[$k]['price'] = session('price'.$val['pid']) + mt_rand(0,5) * 0.0001;
+                $val['price'] = $val['price'] + mt_rand(0,3) * 0.0001;
             }else{
-                $product[$k]['price'] = session('price'.$val['pid']);
+                $val['price'] = $val['price'];
             }
             $lastprice= session('price'.$val['pid']);
-            $product[$k]['is_rise']=($lastprice>=$product[$k]['price'])?1:2;
-            $product[$k]['price'] = number_format($product[$k]['price'],4);
-            if(time() % 60 == 0){
-                session('price'.$val['pid'],$val['price']);
-            }else{
-                session('price'.$val['pid'],$product[$k]['price']);
-            }
+            $val['is_rise']=($lastprice>=$val['price'])?1:2;
+            $val['price'] = number_format($val['price'],4);
+            session('price'.$val['pid'],$val['price']);
         }
-        return  json_encode($product);
+        return json_encode($product);
     }
 
     public  function home() {

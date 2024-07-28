@@ -57,8 +57,8 @@ $(document).ready(function (e) {
   //公告弹窗
   //   get_ad();
   //   window.setInterval("get_ad()",1000*60);
-
-    window.setInterval("getdt()",5000);
+    getdt();
+    window.setInterval("getdt()",10000);
 });
 
 function hideShow() {

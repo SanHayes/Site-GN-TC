@@ -328,7 +328,7 @@ class Api extends Controller{
 					$prodata[$v['pid']] = $v['Price'];
 					continue;
 				}
-				$prodata[$v['pid']] = $this->order_type($_orderlist,$_pro[$v['pid']]);
+				$prodata[$v['pid']] = $this->order_type($_orderlist,$_pro[$v['pid']],$risk);
 			}
 
 			//订单列表
