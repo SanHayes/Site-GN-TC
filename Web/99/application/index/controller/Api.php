@@ -288,19 +288,12 @@ class Api extends Controller{
 	 */
 	public function order()
 	{
-	    //echo date('Y-m-d H:i:s') . " order[1] -> ok \n\r";
 		$oid = input('oid', 0, 'intval');
-		$cache = cache('order:'.$oid);
-		// if($cache){
-		// 	return json(false);
-		// }
-
 		$config = Db::name('config')->field('value')->where(['name'=>'sys_limit','status'=>1])->find();
 		$sys_limit = $config['value'];
 		if($oid>0 && $sys_limit==0){
 			return json(false);
 		}
-
 		$nowtime = time();
 		$kong_end = getconf('kong_end');
 		$kong_end_arr = explode('-',$kong_end );
@@ -309,15 +302,11 @@ class Api extends Controller{
 		}else{
 			$s_rand = 0;
 		}
-		
 		$prodata = array();
 		//风控参数
 		$risk = Db::name('risk')->find();
-
-		cache('order:'.$oid, 1, 2);
-
 		//订单列表
-		if($oid>0){
+		if($oid > 0) {
 			$orderlist = Db::name('order')->where(['oid'=>$oid])->select();
 			if(!$orderlist){
 				return json(false);
@@ -325,7 +314,7 @@ class Api extends Controller{
 			$pid = $orderlist[0]['pid'];
 			$proItem = Db::name('productdata')->field('Price')->where(['pid'=>$pid])->find();
 			$prodata[$pid] = $proItem['Price'];
-		}else{
+		} else {
 			$map['ostaus'] = 0;
 			$map['selltime'] = array('elt',$nowtime+$s_rand);
 			$_orderlist = Db::name('order')->where($map)->order('selltime asc')->select();
