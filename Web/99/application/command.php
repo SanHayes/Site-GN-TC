@@ -1,5 +1,5 @@
 <?php
 //定时任务
 return [
-    'app\home\command\Data',
+    'data' => 'app\index\command\Data',
 ];

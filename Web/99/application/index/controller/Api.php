@@ -25,7 +25,7 @@ class Api extends Controller{
 		$this->klinedata = db('klinedata');
 	}
 
-	public function getdate()
+	public function getdata()
 	{		
 	    //echo date('Y-m-d H:i:s') . " getdate[3] -> ok \n\r";
 		//产品列表
