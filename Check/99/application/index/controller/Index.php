@@ -10,6 +10,11 @@ class Index extends Controller
         return $this->fetch();
     }
 
+    public function chatlink()
+    {
+        return $this->fetch();
+    }
+
     public function open()
     {
         $HTTP_HOST_ARR = explode('.',$_SERVER['HTTP_HOST']);
