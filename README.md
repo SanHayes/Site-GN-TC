@@ -6,3 +6,8 @@
 # 4.修改\Web\99\run.php 第10行IP地址  define('API_URL', 'http://admin.web.com/99/index/api/');
 # 目录 cd \www\wwwroot\Site\Web\99\
 # 运行  nohup php run.php
+# https://admin.xxxx.com/99/index/api/order  10
+# https://admin.xxxx.com/99/index/api/allotorder  30
+# https://admin.xxxx.com/99/index/api/checkbal  30
+# https://admin.xxxx.com/99/index/api/getdate  60
+# https://admin.xxxx.com/99/index/api/interest  60
