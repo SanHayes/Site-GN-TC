@@ -20,9 +20,9 @@ class Index extends Controller
         $HTTP_HOST_ARR = explode('.',$_SERVER['HTTP_HOST']);
         $HTTP_HOST = $HTTP_HOST_ARR[0] === 'www' ? $HTTP_HOST_ARR[1] . '.' . $HTTP_HOST_ARR[2] : $_SERVER['HTTP_HOST'];
         if(isMobile()){
-            $HOST = (isHttps() ? 'https://' : 'http://').'sj.'.$HTTP_HOST.'/99';
+            $HOST = 'https://sj.'.$HTTP_HOST.'/99';
         }else{
-            $HOST = (isHttps() ? 'https://' : 'http://').'dn.'.$HTTP_HOST.'/99';
+            $HOST = 'https://dn.'.$HTTP_HOST.'/99';
         }
         echo "<script language='javascript' type='text/javascript'>";  
         echo "window.location.href='$HOST'";  
