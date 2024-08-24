@@ -9,5 +9,5 @@
 # https://admin.xxxx.com/99/index/api/order  10
 # https://admin.xxxx.com/99/index/api/allotorder  30
 # https://admin.xxxx.com/99/index/api/checkbal  30
-# https://admin.xxxx.com/99/index/api/getdate  60
+# https://admin.xxxx.com/99/index/api/getdata  60
 # https://admin.xxxx.com/99/index/api/interest  60
